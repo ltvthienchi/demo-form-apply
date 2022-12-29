@@ -1,0 +1,35 @@
+.form-builder-container {
+  .question-name {
+    margin-bottom: 8px;
+    .required {
+      color: red;
+    }
+  }
+
+  .only-answers {
+    width: 100%;
+  }
+
+  .list-answers {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 12px 0;
+  }
+
+  .add-new-questions {
+    border: none;
+    background-color: transparent;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline solid black;
+  }
+
+  .review-answers {
+    float: right;
+  }
+
+  .other-box {
+    margin-top: 8px;
+  }
+}

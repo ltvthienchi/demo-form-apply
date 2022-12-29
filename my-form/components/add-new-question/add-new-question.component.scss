@@ -1,0 +1,18 @@
+.add-new-questions-container {
+  .form-control {
+    width: 100%;
+  }
+
+  .add-new-answer {
+    border: none;
+    background-color: transparent;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+
+  .group-button {
+    .button-submit {
+      float: right;
+    }
+  }
+}

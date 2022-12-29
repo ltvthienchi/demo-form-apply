@@ -1,0 +1,11 @@
+<div class="form-answers-container">
+  <div *ngFor="let item of data">
+    <h3 class="title"> {{item.title}} </h3>
+    <ul class="list-answers">
+      <li *ngFor="let answer of item.listAnswers">
+        {{answer}}
+      </li>
+    </ul>
+  </div>
+</div>
+<a class="link-back" (click)="backToBuilder()">Back to Forms Builder</a>

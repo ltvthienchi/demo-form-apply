@@ -1,0 +1,37 @@
+<form class="form-builder-container" [formGroup]="formAnswers">
+  <div *ngIf="dataQuestion.length" formArrayName="answers">
+    <div *ngFor="let question of dataQuestion; let i = index">
+      <p class="question-name">{{question?.formName}} <span class="required" *ngIf="question.requiredQuestion">*</span></p>
+      <div [formGroupName]="i">
+        <mat-form-field appearance="fill" class="only-answers" *ngIf="question?.formType === QuestionType.paragraph">
+          <mat-label>Your answers</mat-label>
+          <textarea matInput placeholder="Enter your answers"
+                    [formControl]="formAnswers.controls.answers.controls[i].controls.listAnswers.controls[0]">
+          </textarea>
+        </mat-form-field>
+        <ul class="list-answers" *ngIf="question?.formType === QuestionType.checkbox">
+          <li *ngFor="let answer of question?.formAnswers; let j = index">
+            <section class="example-section">
+              <mat-checkbox class="example-margin" [formControl]="formAnswers.controls.answers.controls[i].controls.listAnswers.controls[j]">
+                {{answer}}
+              </mat-checkbox>
+            </section>
+          </li>
+          <li *ngIf="formAnswers.controls.answers.controls[i].controls.isOther.value">
+            <mat-checkbox class="example-margin" [formControl]="formAnswers.controls.answers.controls[i].controls.otherCheckBox">
+              Other
+            </mat-checkbox>
+            <mat-form-field appearance="fill" class="only-answers other-box" *ngIf="formAnswers.controls.answers.controls[i].controls.otherCheckBox.value">
+              <mat-label>Your answers</mat-label>
+              <textarea matInput placeholder="Enter your answers"
+                        [formControl]="formAnswers.controls.answers.controls[i].controls.listAnswers.controls[formAnswers.controls.answers.controls[i].controls.listAnswers.controls.length - 1]">
+              </textarea>
+            </mat-form-field>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <button (click)="openModalAddNewQuestion()" class="add-new-questions">Add New Question</button>
+  <button mat-raised-button class="review-answers" (click)="reviewAnswers()">Review my answers ></button>
+</form>
